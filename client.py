@@ -7,5 +7,5 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.connect((HOST, PORT))
     while True:
         data = s.recv(1024)
-        s.settimeout(0.5)
+        # s.settimeout(0.5)
         print('Received', repr(data))

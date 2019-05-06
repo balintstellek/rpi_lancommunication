@@ -1,5 +1,9 @@
 # Echo server program
 import socket
+from sense_hat import SenseHat
+from time import sleep
+
+sense = SenseHat()
 
 HOST = ''                 # Symbolic name meaning all available interfaces
 PORT = 50007              # Arbitrary non-privileged port
@@ -10,4 +14,6 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     with conn:
         print('Connected by', addr)
         while True:
-            conn.send(b'Hello bellooo')
+            event = sense.stick.wait_for_event()
+            conn.send(event.direction.encode())
+            sleep(0.1)
