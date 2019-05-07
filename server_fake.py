@@ -20,11 +20,11 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 p = random.randint(1, 5)
                 if p == 1:
                     event = "up"
-                else if p = 2:
+                elif p = 2:
                     event = "down"
-                else if p = 3:
+                elif p = 3:
                     event = "left"
-                else if p = 4:
+                elif p = 4:
                     event = "right"
                 else:
                     event = "middle"
