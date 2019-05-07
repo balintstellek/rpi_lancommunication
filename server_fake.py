@@ -1,6 +1,7 @@
 # Echo server program
 import socket
 import random
+import time
 # from sense_hat import SenseHat
 # from time import sleep
 
@@ -8,6 +9,7 @@ import random
 
 HOST = ''                 # Symbolic name meaning all available interfaces
 PORT = 50007              # Arbitrary non-privileged port
+directions = ["up", "down", "left", "right", "middle"]
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.bind((HOST, PORT))
     s.listen(1)
@@ -17,16 +19,6 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         while True:
             # event = sense.stick.wait_for_event()
             while True:
-                p = random.randint(1, 5)
-                if p == 1:
-                    event = "up"
-                elif p = 2:
-                    event = "down"
-                elif p = 3:
-                    event = "left"
-                elif p = 4:
-                    event = "right"
-                else:
-                    event = "middle"
-                conn.send(event.direction.encode())
-                sleep(5)
+                event = random.choice(directions)
+                conn.send(event.encode())
+                time.sleep(2)
