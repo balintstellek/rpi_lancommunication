@@ -17,8 +17,7 @@ def socket_comm():
         while True:
             data = s.recv(1024)
             event = data.decode('utf-8')
-            listbox.insert(END,event)
-            listbox.pack()
+            dirs.set(event)
             root.update_idletasks()
             root.update()
             time.sleep(0.2)
@@ -30,8 +29,9 @@ label = Label(root,text='Joystick GUI')
 label.pack()
 
 root.config(bg='gray')
-listbox = Listbox(root, bg = "gray")
-listbox.pack()
+dirs = StringVar()
+label2 = Label(root,textvariable=dirs).pack()
+dirs.set("Direction")
 
 startbutton = Button(root, fg = "blue", text = 'Start',  width=15, height=1, command = socket_comm)
 startbutton.pack(side = LEFT)
