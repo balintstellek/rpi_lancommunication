@@ -10,11 +10,10 @@ def socket_comm():
     while True:
             event = random.choice(directions)
             time.sleep(2)
-            listbox.insert(END,event)
-            listbox.pack()
+            dirs.set(event)
             root.update_idletasks()
             root.update()
-            print(event)
+            time.sleep(0.2)
 
 root = Tk()
 root.minsize(200,300)
@@ -22,13 +21,14 @@ label = Label(root,text='Joystick GUI')
 label.pack()
 
 root.config(bg='gray')
-listbox = Listbox(root, bg = "gray")
-listbox.pack()
+dirs = StringVar()
+label2 = Label(root,textvariable=dirs).pack()
+dirs.set("Direction")
 
-startbutton = Button(root, bg = "blue", text = 'Start',  width=15, height=1, command = socket_comm)
+startbutton = Button(root, fg = "blue", text = 'Start',  width=15, height=1, command = socket_comm)
 startbutton.pack(side = LEFT)
 
-stopbutton = Button(root, bg = "blue", text = 'Quit',  width=15, height=1, command = close_window)
+stopbutton = Button(root, fg = "blue", text = 'Quit',  width=15, height=1, command = close_window)
 stopbutton.pack(side = RIGHT)
 
 root.mainloop()
