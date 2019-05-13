@@ -16,19 +16,27 @@ def socket_comm():
             time.sleep(0.2)
 
 root = Tk()
-root.minsize(200,300)
+root.geometry("500x500")
+root.resizable(0, 0)
+
+root.minsize(500,500)
 label = Label(root,text='Joystick GUI')
+label.config(width=100)
+label.place(x=250, y=100, anchor="center")
 label.pack()
 
 root.config(bg='gray')
 dirs = StringVar()
-label2 = Label(root,textvariable=dirs).pack()
+label2 = Label(root,textvariable=dirs)
+label2.config(width=200, font=("Courier", 44))
+label2.place(x=250, y=250, anchor="center")
 dirs.set("Direction")
 
+
 startbutton = Button(root, fg = "blue", text = 'Start',  width=15, height=1, command = socket_comm)
-startbutton.pack(side = LEFT)
+startbutton.place( x=200, y=400, anchor=SE)
 
 stopbutton = Button(root, fg = "blue", text = 'Quit',  width=15, height=1, command = close_window)
-stopbutton.pack(side = RIGHT)
+stopbutton.place( x=300, y=400, anchor=SW)
 
 root.mainloop()
