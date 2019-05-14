@@ -16,27 +16,32 @@ def socket_comm():
             time.sleep(0.2)
 
 root = Tk()
-root.geometry("500x500")
+root.geometry("500x300")
 root.resizable(0, 0)
 
-root.minsize(500,500)
-label = Label(root,text='Joystick GUI')
-label.config(width=100)
+root.minsize(500,300)
+label = Label(root,text='Joystick GUI',bg = "gray")
+label.config(width=100,  height=2, font=("Courier", 24, "bold"))
 label.place(x=250, y=100, anchor="center")
 label.pack()
 
 root.config(bg='gray')
 dirs = StringVar()
-label2 = Label(root,textvariable=dirs)
-label2.config(width=200, font=("Courier", 44))
-label2.place(x=250, y=250, anchor="center")
+label2 = Label(root, textvariable=dirs, bg = "gray", borderwidth=2, relief="groove", width = 200)
+label2.config(width=10, font=("Courier", 44))
+label2.place(x=250, y=150, anchor="center")
 dirs.set("Direction")
 
 
-startbutton = Button(root, fg = "blue", text = 'Start',  width=15, height=1, command = socket_comm)
-startbutton.place( x=200, y=400, anchor=SE)
+startbutton = Button(root, fg = "black", text = 'Start', bg = "gray", borderwidth=2, relief="raised", command = socket_comm)
+startbutton.config(width=15, height=1, font=("Courier", 10, "bold"))
+startbutton.place( x=200, y=270, anchor=SE)
 
-stopbutton = Button(root, fg = "blue", text = 'Quit',  width=15, height=1, command = close_window)
-stopbutton.place( x=300, y=400, anchor=SW)
+stopbutton = Button(root, fg = "black", text = 'Quit', bg = "gray", borderwidth=2, relief="raised", command = close_window)
+stopbutton.config(width=15, height=1, font=("Courier", 10, "bold"))
+stopbutton.place( x=300, y=270, anchor=SW)
 
 root.mainloop()
+
+
+
